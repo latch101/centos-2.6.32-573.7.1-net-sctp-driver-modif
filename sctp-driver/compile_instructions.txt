@@ -1,0 +1,17 @@
+# Should work for all -358 kernels
+# tested with kernel 2.6.32-358.2.1
+# to check your kernel version 'uname -r'
+# Once the kernel installed reboot and chose the kernel version
+# You should be able to compile the sctp driver for that kernel
+# If you want to compile for your current kernel
+# you must call 'yum install kernel-devel-<YOUR_KERNEL_VERSION>'
+yum install kernel-2.6.32-573.7.1.el6
+yum install kernel-devel-2.6.32-573.7.1.el6
+cp -f structs.h user.h /usr/src/kernels/2.6.32-358.2.1.el6.x86_64/include/net/sctp
+reboot
+
+# Select the appropriate kernel from the boot list
+cd sctp
+make clean
+make
+
